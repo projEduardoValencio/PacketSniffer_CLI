@@ -29,14 +29,14 @@ public sealed class CliApp
         var devices = _capture.GetDevices().ToList();
         if (!devices.Any())
         {
-            AnsiConsole.MarkupLine("[red]Nenhuma interface encontrada.[/]");
+            AnsiConsole.MarkupLine("[red]Divice not found.[/]");
             return 2;
         }
 
         // Get Device from user input
         deviceName ??= AnsiConsole.Prompt(
             new SelectionPrompt<string>()
-                .Title("Selecione a interface")
+                .Title("Select device:")
                 .PageSize(10)
                 .AddChoices(devices.Select(d => d.description.ToString()))
         );
